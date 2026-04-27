@@ -247,10 +247,4 @@ async def get_library_databases(subject: str = "") -> str:
 
 
 if __name__ == "__main__":
-    import uvicorn
-    from starlette.middleware.trustedhost import TrustedHostMiddleware
-    port = int(os.environ.get("PORT", 8000))
-    app = mcp.streamable_http_app()
-    # Allow Railway's domain and any subdomain
-    app.add_middleware(TrustedHostMiddleware, allowed_hosts=["*"])
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    mcp.run(transport="streamable-http")
