@@ -8,7 +8,13 @@ import json
 import httpx
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("USyd Library")
+import os as _os
+mcp = FastMCP(
+    "USyd Library",
+    host="0.0.0.0",
+    port=int(_os.environ.get("PORT", 8000)),
+    stateless_http=True,
+)
 
 PRIMO_BASE = "https://api-eu.hosted.exlibrisgroup.com/primo/v1/search"
 VID = "61USYD_INST:sydney"
