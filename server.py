@@ -247,4 +247,7 @@ async def get_library_databases(subject: str = "") -> str:
 
 
 if __name__ == "__main__":
-    mcp.run(transport="streamable-http")
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    app = mcp.streamable_http_app()
+    uvicorn.run(app, host="0.0.0.0", port=port)
